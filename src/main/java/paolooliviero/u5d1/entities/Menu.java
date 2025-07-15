@@ -31,5 +31,14 @@ public class Menu {
         }
     }
 
+    public List<Pizza> getPizze() {
+        return pizze;
+    }
+
+    public List<Bevanda> getBevande() {
+        return bevande;
+    }
+
+
 }
 
