@@ -1,5 +1,6 @@
 package paolooliviero.u5d1;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import paolooliviero.u5d1.entities.Bevanda;
@@ -24,6 +25,7 @@ public class ConfigClass {
     }
 
     @Bean
+    @Qualifier("Diavola")
     public Pizza diavola() {
         Pizza pizza = new Pizza("Diavola", 6.00, 10);
         pizza.addTopping(prosciutto());
@@ -32,11 +34,13 @@ public class ConfigClass {
     }
 
     @Bean
+    @Qualifier ("Margherita")
     public Pizza margherita() {
         return new Pizza("Margherita", 4.00, 50);
     }
 
     @Bean
+    @Qualifier("Cola")
     public Bevanda cola() {
         return new Bevanda("Cocacola", 3.00, 40);
     }

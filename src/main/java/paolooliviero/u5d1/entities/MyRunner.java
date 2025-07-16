@@ -1,13 +1,12 @@
 package paolooliviero.u5d1.entities;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-
-import static paolooliviero.u5d1.entities.StatoOrdine.IN_CORSO;
 
 @Component
 public class MyRunner implements CommandLineRunner {
@@ -16,20 +15,20 @@ public class MyRunner implements CommandLineRunner {
     private double costoCoperto;
 
     @Autowired
-    private Menu menu;
+    @Qualifier("Margherita")
+    private Pizza pizza;
+
+    @Autowired
+    @Qualifier("Cola")
+    private Bevanda bevanda;
 
     @Override
     public void run(String... args) {
-        List<Prodotto> ordinati = List.of(
-                menu.getPizze().get(0),
-                menu.getBevande().get(0)
-        );
+        List<Prodotto> ordinati = List.of(pizza, bevanda);
 
-        Ordine ordine = new Ordine (1,
-                3, StatoOrdine.IN_CORSO,
-                ordinati, costoCoperto
-        );
+        Ordine ordine = new Ordine(1, 3, StatoOrdine.IN_CORSO, ordinati, costoCoperto);
 
         System.out.println(ordine);
+    }
+}
 
-    }}
