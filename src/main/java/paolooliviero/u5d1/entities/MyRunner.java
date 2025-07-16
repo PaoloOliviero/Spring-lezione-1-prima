@@ -10,7 +10,7 @@ import java.util.List;
 import static paolooliviero.u5d1.entities.StatoOrdine.IN_CORSO;
 
 @Component
-public class AvvioOrdine implements CommandLineRunner {
+public class MyRunner implements CommandLineRunner {
 
     @Value("${costo.coperto}")
     private double costoCoperto;
@@ -27,7 +27,7 @@ public class AvvioOrdine implements CommandLineRunner {
 
         Ordine ordine = new Ordine (1,
                 3, StatoOrdine.IN_CORSO,
-                ordinati, 2.00
+                ordinati, costoCoperto
         );
 
         System.out.println(ordine);
